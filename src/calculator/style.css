@@ -3,17 +3,22 @@
     width: 235px;
     border-radius: 5px;
     overflow: hidden;
-    background-color: beige
+    background-color: beige;
+
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 48px 48px 48px 48px 48px;
 }
 
 body {
     display: flex;
     height: 100vh;
     justify-content: center;
+    text-align: center;
     align-items: center;
     color: whitesmoke;
     background: #667db6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #5ab5e6, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }

@@ -8,15 +8,29 @@ class Calculator extends Component {
             <>
                <h1>Calculator</h1>
                <div className='calculator'>
+                   <Button digit='AC' />
+                   <Button digit='/' />
+                   <Button digit='-' />
+                   <Button digit='/' />
+
+                   <Button digit={7} />
+                   <Button digit={8} />
+                   <Button digit={9} />
+                   <Button digit='x' />
+
+                   <Button digit={4} />
+                   <Button digit={5} />
+                   <Button digit={6} />
+                   <Button digit='-' />
+
                    <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
-                   <Button digit={1} />
+                   <Button digit={2} />
+                   <Button digit={3} />
+                   <Button digit='+' />
+                   
+                   <Button digit={0} />
+                   <Button digit=',' />
+                   <Button digit='=' />
                </div>
             </>
 
