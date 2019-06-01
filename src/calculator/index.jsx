@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Button from './button'
+import Display from './display'
+
 import './style.css'
 
 class Calculator extends Component {
@@ -8,6 +10,8 @@ class Calculator extends Component {
             <>
                <h1>Calculator</h1>
                <div className='calculator'>
+                   <Display value={100} />
+                   
                    <Button digit='AC' />
                    <Button digit='/' />
                    <Button digit='-' />
@@ -28,6 +32,7 @@ class Calculator extends Component {
                    <Button digit={3} />
                    <Button digit='+' />
                    
+                   <Button  />
                    <Button digit={0} />
                    <Button digit=',' />
                    <Button digit='=' />
