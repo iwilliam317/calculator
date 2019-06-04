@@ -10,12 +10,12 @@ class Calculator extends Component {
             <>
                <h1>Calculator</h1>
                <div className='calculator'>
-                   <Display value={100} />
+                   <Display className='asdas' value={100} />
                    
-                   <Button digit='AC' />
-                   <Button digit='/' />
-                   <Button digit='-' />
-                   <Button digit='/' />
+                   <Button classs='asr' digit='AC' />
+                   <Button classs='button-operator' digit='/' />
+                   <Button className='button-operator' digit='-' />
+                   <Button className='button-operator' digit='/' />
 
                    <Button digit={7} />
                    <Button digit={8} />
