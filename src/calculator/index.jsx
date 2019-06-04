@@ -10,32 +10,31 @@ class Calculator extends Component {
             <>
                <h1>Calculator</h1>
                <div className='calculator'>
-                   <Display className='asdas' value={100} />
+                   <Display value={100} />
                    
-                   <Button classs='asr' digit='AC' />
-                   <Button classs='button-operator' digit='/' />
-                   <Button className='button-operator' digit='-' />
-                   <Button className='button-operator' digit='/' />
+                   <Button style='operator' digit='AC' />
+                   <Button style='operator' digit='/' />
+                   <Button style='operator' digit='-' />
+                   <Button style='operator' digit='/' />
 
                    <Button digit={7} />
                    <Button digit={8} />
                    <Button digit={9} />
-                   <Button digit='x' />
+                   <Button style='operator' digit='x' />
 
                    <Button digit={4} />
                    <Button digit={5} />
                    <Button digit={6} />
-                   <Button digit='-' />
+                   <Button style='operator' digit='-' />
 
                    <Button digit={1} />
                    <Button digit={2} />
                    <Button digit={3} />
-                   <Button digit='+' />
+                   <Button style='operator' digit='+' />
                    
-                   <Button  />
-                   <Button digit={0} />
+                   <Button style='double' digit={0} />
                    <Button digit=',' />
-                   <Button digit='=' />
+                   <Button style='operator' digit='=' />
                </div>
             </>
 

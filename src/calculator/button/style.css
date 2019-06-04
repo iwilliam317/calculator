@@ -11,7 +11,23 @@
     outline: none;
 }
 
-.button-operator {
-    background-color: tomato !important;
-    color: white
+.button:active {
+    background-color: #ccc;
+}
+
+.button.double {
+    grid-column: span 2;
+}
+
+.button.triple {
+    grid-column: span 3;
+}
+
+.button.operator {
+    background-color: #fa8231;
+    color: #fff;
+}
+
+.button.operator:active {
+    background-color: #fa8231cc;
 }
