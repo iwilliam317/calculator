@@ -4,29 +4,39 @@ import Display from './display'
 
 import './style.css'
 
+const initialState = {
+    displayValue: '0',
+    shouldClear: false,
+    operation: null,
+    values: [0,0],
+    current: 0
+}
+
 class Calculator extends Component {
 
-    state = { currentValue: 0 }
+    state = { ...initialState }
 
     addDigit = event => {
-        const currentValue = this.state.currentValue + event.target.innerHTML
-        this.setState({ currentValue })
+        const digit = event.target.innerHTML
+        let { displayValue } = this.state
+
+        if (digit == '.' && this.state.displayValue.includes('.')) return
+        displayValue = displayValue + digit
+        this.setState({ displayValue })
     }
 
     clearDisplay = () => {
-        console.log('asd');
-        
-        this.setState({...this.state, currentValue: 0})
+        this.setState({...initialState})
     }
 
     render(){
-        const {currentValue} = this.state
+        const {displayValue} = this.state
         const {clearDisplay, addDigit} = this
         return(
             <>
                <h1>Calculator</h1>
                <div className='calculator'>
-                   <Display value={currentValue} />
+                   <Display value={displayValue} />
                    
                    <Button style='operator' digit='AC' click={clearDisplay}/>
                    <Button style='operator' digit='/' />
@@ -49,7 +59,7 @@ class Calculator extends Component {
                    <Button style='operator' digit='+' />
                    
                    <Button style='double' digit='0' />
-                   <Button digit=',' />
+                   <Button digit='.' click={addDigit}/>
                    <Button style='operator' digit='=' />
                </div>
             </>
