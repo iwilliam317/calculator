@@ -16,13 +16,21 @@ class Calculator extends Component {
 
     state = { ...initialState }
 
-    addDigit = event => {
-        const digit = event.target.innerHTML
-        let { displayValue, clearDisplay } = this.state
+    _onlyOneDot = (digit, values) => {
+        return digit == '.' && values.includes('.')
+    }
 
-        if (digit == '.' && displayValue.includes('.')) return
+    _shouldClearDisplay = (value, flag) => {
+        return value === '0' || flag
+    }
+    addDigit = event => {
+        let { displayValue, clearDisplay } = this.state
+        const digit = event.target.innerHTML
+
+        if (this._onlyOneDot(digit, displayValue)) return
         
-        clearDisplay = displayValue === '0' || clearDisplay
+        clearDisplay = this._shouldClearDisplay(displayValue, clearDisplay)
+        
         const currentValue = clearDisplay ? '' : displayValue
       
         displayValue = currentValue + digit
