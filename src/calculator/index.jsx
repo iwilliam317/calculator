@@ -18,11 +18,17 @@ class Calculator extends Component {
 
     addDigit = event => {
         const digit = event.target.innerHTML
-        let { displayValue } = this.state
+        let { displayValue, clearDisplay } = this.state
 
-        if (digit == '.' && this.state.displayValue.includes('.')) return
-        displayValue = displayValue + digit
-        this.setState({ displayValue })
+        if (digit == '.' && displayValue.includes('.')) return
+        
+        clearDisplay = displayValue === '0' || clearDisplay
+        const currentValue = clearDisplay ? '' : displayValue
+      
+        displayValue = currentValue + digit
+
+
+        this.setState({ displayValue, clearDisplay: false  })
     }
 
     clearDisplay = () => {
@@ -41,7 +47,7 @@ class Calculator extends Component {
                    <Button style='operator' digit='AC' click={clearDisplay}/>
                    <Button style='operator' digit='/' />
                    <Button style='operator' digit='-' />
-                   <Button style='operator' digit='/' />
+                   <Button style='operator' />
 
                    <Button digit='7' click={addDigit}/>
                    <Button digit='8' click={addDigit} />
@@ -58,7 +64,7 @@ class Calculator extends Component {
                    <Button digit='3' click={addDigit} />
                    <Button style='operator' digit='+' />
                    
-                   <Button style='double' digit='0' />
+                   <Button style='double' digit='0' click={addDigit} />
                    <Button digit='.' click={addDigit}/>
                    <Button style='operator' digit='=' />
                </div>
