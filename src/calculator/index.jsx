@@ -35,8 +35,17 @@ class Calculator extends Component {
       
         displayValue = currentValue + digit
 
-
         this.setState({ displayValue, clearDisplay: false  })
+        
+        if(digit !== '.'){
+            const i = this.state.current
+            const newValue = parseFloat(displayValue)
+            const values = [...this.state.values]
+            values[i] = newValue
+            this.setState({values})
+            console.log(values)
+        }
+
     }
 
     clearDisplay = () => {
