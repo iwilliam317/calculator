@@ -23,6 +23,11 @@ class Calculator extends Component {
     _shouldClearDisplay = (value, flag) => {
         return value === '0' || flag
     }
+
+    setOperation = event => {
+        const operation = event.target.innerHTML || null
+        this.setState({operation})
+    }
     addDigit = event => {
         let { displayValue, clearDisplay } = this.state
         const digit = event.target.innerHTML
@@ -54,36 +59,36 @@ class Calculator extends Component {
 
     render(){
         const {displayValue} = this.state
-        const {clearDisplay, addDigit} = this
+        const {clearDisplay, addDigit, setOperation} = this
         return(
             <>
                <h1>Calculator</h1>
                <div className='calculator'>
                    <Display value={displayValue} />
                    
-                   <Button style='operator' digit='AC' click={clearDisplay}/>
-                   <Button style='operator' digit='/' />
-                   <Button style='operator' digit='-' />
+                   <Button style='operator' digit='AC' click={clearDisplay} />
+                   <Button style='operator' digit='/' click={setOperation} />
+                   <Button style='operator' digit='-' click={setOperation} />
                    <Button style='operator' />
 
                    <Button digit='7' click={addDigit}/>
                    <Button digit='8' click={addDigit} />
                    <Button digit='9' click={addDigit} />
-                   <Button style='operator' digit='x' />
+                   <Button style='operator' digit='*' click={setOperation} />
 
                    <Button digit='4' click={addDigit} />
                    <Button digit='5' click={addDigit} />
                    <Button digit='6' click={addDigit} />
-                   <Button style='operator' digit='-' />
+                   <Button style='operator' digit='-' click={setOperation} />
 
                    <Button digit='1' click={addDigit} />
                    <Button digit='2' click={addDigit} />
                    <Button digit='3' click={addDigit} />
-                   <Button style='operator' digit='+' />
+                   <Button style='operator' digit='+' click={setOperation} />
                    
                    <Button style='double' digit='0' click={addDigit} />
                    <Button digit='.' click={addDigit}/>
-                   <Button style='operator' digit='=' />
+                   <Button style='operator' digit='=' click={setOperation} />
                </div>
             </>
 
