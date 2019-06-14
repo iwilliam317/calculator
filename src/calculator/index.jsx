@@ -9,7 +9,7 @@ const initialState = {
     shouldClear: false,
     operation: null,
     values: [0,0],
-    current: 0
+    currentIndex: 0
 }
 
 class Calculator extends Component {
@@ -26,7 +26,11 @@ class Calculator extends Component {
 
     setOperation = event => {
         const operation = event.target.innerHTML || null
-        this.setState({operation})
+        const {currentIndex} = this.state        
+        if(currentIndex === 0) {
+            this.setState({...this.state, operation, currentIndex: 1, clearDisplay: true})
+
+        }
     }
     addDigit = event => {
         let { displayValue, clearDisplay } = this.state
@@ -43,7 +47,7 @@ class Calculator extends Component {
         this.setState({ displayValue, clearDisplay: false  })
         
         if(digit !== '.'){
-            const i = this.state.current
+            const i = this.state.currentIndex
             const newValue = parseFloat(displayValue)
             const values = [...this.state.values]
             values[i] = newValue
