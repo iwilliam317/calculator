@@ -25,12 +25,22 @@ class Calculator extends Component {
     }
 
     setOperation = event => {
-        const operation = event.target.innerHTML || null
+        const operation = event.target.innerHTML
+        console.log(operation)
         const {currentIndex} = this.state        
         if(currentIndex === 0) {
-            this.setState({...this.state, operation, currentIndex: 1, clearDisplay: true})
-
+            this.setState({operation, currentIndex: 1, clearDisplay: true})
         }
+        else {
+            const equals = operation === '='
+            const currentOperation = this.state.operation
+
+            const values =  [...this.state.values]
+            values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
+            values[1] = 0
+            this.setState({displayValue: values[0]})
+        }
+        console.log(this.state.operation)
     }
     addDigit = event => {
         let { displayValue, clearDisplay } = this.state
