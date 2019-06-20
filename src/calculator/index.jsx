@@ -12,43 +12,43 @@ const initialState = {
     currentIndex: 0
 }
 
+const RESET_VALUE = 0
+
 class Calculator extends Component {
 
     state = { ...initialState }
 
-    _onlyOneDot = (digit, values) => {
+    _checkDot = (digit, values) => {
         return digit == '.' && values.includes('.')
     }
 
-    _shouldClearDisplay = (value, flag) => {
+    _canClearDisplay = (value, flag) => {
         return value === '0' || flag
     }
 
     setOperation = event => {
         const operation = event.target.innerHTML
-        console.log(operation)
         const {currentIndex} = this.state        
         if(currentIndex === 0) {
             this.setState({operation, currentIndex: 1, clearDisplay: true})
         }
         else {
-            const equals = operation === '='
             const currentOperation = this.state.operation
-
             const values =  [...this.state.values]
+
             values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
-            values[1] = 0
+            values[1] = RESET_VALUE
+
             this.setState({displayValue: values[0]})
         }
-        console.log(this.state.operation)
     }
     addDigit = event => {
         let { displayValue, clearDisplay } = this.state
         const digit = event.target.innerHTML
 
-        if (this._onlyOneDot(digit, displayValue)) return
+        if (this._checkDot(digit, displayValue)) return
         
-        clearDisplay = this._shouldClearDisplay(displayValue, clearDisplay)
+        clearDisplay = this._canClearDisplay(displayValue, clearDisplay)
         
         const currentValue = clearDisplay ? '' : displayValue
       
